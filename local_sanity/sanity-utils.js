@@ -1,20 +1,40 @@
 import { createClient, groq } from "next-sanity";
 
 export async function getProducts() {
+  console.log('Abood');
   const client = createClient({
     projectId: "r8ewtp4b",
     dataset: "production",
-    apiVersion: "2024-01-02",
+    apiVersion: "2024-01-05",
+    useCdn: true,
+    token: process.env.SANITY_API_KEY,
   });
-  return client.fetch(
+  const products = await client.fetch(
     groq`*[_type == "product"]{
-      _id,
-      _createdAt,
+      "image":image.asset->url,
       name,
+      _id,
+      details,
       "slug":slug.current,
       price,
-      details,
-      "image":image.asset->url,
     }`
   );
+  const banner = await client.fetch(
+    groq`*[_type == "banner"]{
+      "image":image.asset->url,
+      buttonText,
+      product,
+      desc,
+      smallText,
+      midText,
+      largeText1,
+      largeText2,
+      discount,
+      saleTime
+    }`
+  );
+  return {
+    banner,
+    products,
+  };
 }
