@@ -5,7 +5,7 @@ const config = defineConfig({
   projectId: "r8ewtp4b",
   dataset: "production",
   title: "eCommerce_Sanity",
-  apiVersion: "2024-01-05",
+  apiVersion: "2024-01-06",
   useCdn: true,
   token: process.env.SANITY_API_KEY,
   basePath: "/Admin",

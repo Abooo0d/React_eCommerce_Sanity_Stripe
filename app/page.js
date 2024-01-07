@@ -3,7 +3,6 @@ import { HeroBanner, Navbar, Cart, FooterBanner, Product } from "@/Components";
 import { getProducts } from "@/local_sanity/sanity-utils";
 const Home = async () => {
   const { products, banner } = await getProducts();
-  console.log(banner, "Abood");
   return (
     <>
       <HeroBanner data={banner.length && banner[0]} />
@@ -16,7 +15,7 @@ const Home = async () => {
           <Product key={product._id} product={product} />
         ))}
       </div>
-      <FooterBanner />
+      <FooterBanner footerBanner={banner && banner[0]} />
     </>
   );
 };

@@ -1,17 +1,16 @@
 import { createClient, groq } from "next-sanity";
 
 export async function getProducts() {
-  console.log('Abood');
   const client = createClient({
     projectId: "r8ewtp4b",
     dataset: "production",
-    apiVersion: "2024-01-05",
-    useCdn: true,
+    apiVersion: "2024-01-06",
+    useCdn: false,
     token: process.env.SANITY_API_KEY,
   });
   const products = await client.fetch(
     groq`*[_type == "product"]{
-      "image":image.asset->url,
+      "image":image[].asset->url,
       name,
       _id,
       details,
