@@ -3,6 +3,7 @@ import { HeroBanner, Navbar, Cart, FooterBanner, Product } from "@/Components";
 import { getProducts } from "@/local_sanity/sanity-utils";
 const Home = async () => {
   const { products, banner } = await getProducts();
+  console.log(products);
   return (
     <>
       <HeroBanner data={banner.length && banner[0]} />
