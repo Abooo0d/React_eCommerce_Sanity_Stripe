@@ -20,7 +20,12 @@ const ProductDetails = async ({ params }) => {
             <DetailsImage images={image} />
           </div>
         </div>
-        <ProductDetailsDesc name={name} price={price} details={details} />
+        <ProductDetailsDesc
+          name={name}
+          price={price}
+          details={details}
+          fullProduct={productDetails}
+        />
       </div>
       <div className="maylike-products-wrapper ">
         <h2>You Mak Also Like</h2>

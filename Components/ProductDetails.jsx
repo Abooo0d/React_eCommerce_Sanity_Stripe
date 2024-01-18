@@ -7,8 +7,8 @@ import {
   AiFillStar,
   AiOutlineStar,
 } from "react-icons/ai";
-const ProductDetailsDesc = ({ name, price, details }) => {
-  const { decQty, incQty, qty } = useStateContext();
+const ProductDetailsDesc = ({ name, price, details, fullProduct }) => {
+  const { decQty, incQty, qty, onAdd } = useStateContext();
   return (
     <div className="product-detail-desc">
       <h1>{name}</h1>
@@ -38,7 +38,11 @@ const ProductDetailsDesc = ({ name, price, details }) => {
         </p>
       </div>
       <div className="buttons">
-        <button type="button" className="add-to-cart">
+        <button
+          type="button"
+          className="add-to-cart"
+          onClick={() => onAdd(fullProduct, qty)}
+        >
           Add To Cart
         </button>
         <button type="button" className="buy-now">
