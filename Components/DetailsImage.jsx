@@ -6,7 +6,11 @@ const DetailsImage = ({ images }) => {
   return (
     <div>
       <div className="image-container">
-        <img src={images && images[Index]} alt="" />
+        <img
+          src={images && images[Index]}
+          alt="Product Image"
+          className="product-detail-image"
+        />
       </div>
       <div className="small-images-container">
         {images.map((img, i) => (
